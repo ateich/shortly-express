@@ -86,6 +86,19 @@ function(req, res) {
   });
 });
 
+// app.get('/logout', checkUser, function(req, res){
+//   console.log('LOGOUT');
+//   req.session.destroy(function(){
+//       res.redirect(301, '/');
+//   });
+// });
+app.post('/logout', checkUser, function(req, res){
+  console.log('LOGOUT');
+  req.session.destroy(function(){
+      res.redirect(301, '/');
+  });
+});
+
 app.post('/signup', function(req, res){
   var username = req.body.username;
   var password = req.body.password;
