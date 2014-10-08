@@ -34,9 +34,10 @@ User.prototype.comparePassword = function(password, callback){
 
 User.prototype.hashPassword = function(callback){
   // bcrypt.genSalt(1, function(err, salt){
-    bcrypt.hash(this.password, null, null, function(err, hash) {
+  console.log('password is ', this.attributes.password);
+    bcrypt.hash(this.attributes.password, null, null, function(err, hash) {
       // Store hash in your password DB.
-      console.log('hash the password! ', typeof hash);
+      console.log('hash the password! ', hash);
       this.set('password', hash);
       callback();
     }.bind(this));
